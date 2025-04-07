@@ -1,147 +1,82 @@
 import React from 'react'
-
 import { IoIosArrowDown } from 'react-icons/io'
 import { IoPeople } from 'react-icons/io5'
-import { Bar, BarChart, CartesianGrid, Legend, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-// import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
 
 const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
+  { name: 'Jan', uv: 100 },
+  { name: 'Feb', uv: 80 },
+  { name: 'Mar', uv: 70 },
+  { name: 'Apr', uv: 90 },
+  { name: 'May', uv: 60 },
+  { name: 'Jun', uv: 75 },
+  { name: 'Jul', uv: 95 },
+  { name: 'Aug', uv: 65 },
+  { name: 'Sep', uv: 85 },
+  { name: 'Oct', uv: 55 },
+  { name: 'Nov', uv: 70 },
+  { name: 'Dec', uv: 90 },
 ];
 function Dashboard() {
-
-
- 
   return (
-    <div className='bg-[#FFFFFF] h-screen w-full'>
-      <div className='flex justify-between  gap-10 p-4'>
-        <div className='w-[370px] shadow-xl'>
-          <div className='shadow-[Drop Shadow/600px] flex items-center justify-between px-20 py-6 '>
-            <IoPeople />
-            <div>
-              <p>10</p>
-              <p className='text-[#8CAB91] text-[16px] shadow-2xl'>total User</p>
+    <div className='bg-[#FFFFFF] min-h-screen w-full p-4'>
+      {/* Top Cards */}
+      <div className='flex justify-between gap-6 mb-8'>
+        {[1, 2, 3].map((_, i) => (
+          <div key={i} className='w-[370px] shadow-xl rounded-lg bg-white p-6 flex items-center justify-between'>
+            <IoPeople className='text-3xl text-[#4B5563]' />
+            <div className='text-right'>
+              <p className='text-xl font-bold'>10</p>
+              <p className='text-[#8CAB91] text-sm'>Total Users</p>
             </div>
           </div>
-
-        </div>
-        <div className='w-[370px] shadow-xl'>
-          <div className='shadow-[Drop Shadow/600px] flex items-center justify-between px-20 py-6 '>
-            <IoPeople />
-            <div>
-              <p>10</p>
-              <p className='text-[#8CAB91] text-[16px] shadow-2xl'>total User</p>
-            </div>
-          </div>
-
-        </div>
-        <div className='w-[370px] shadow-xl'>
-          <div className='shadow-[Drop Shadow/600px] flex items-center justify-between px-20 py-6 '>
-            <IoPeople />
-            <div>
-              <p>10</p>
-              <p className='text-[#8CAB91] text-[16px] shadow-2xl'>total User</p>
-            </div>
-          </div>
-
-        </div>
-
-
-
-
+        ))}
       </div>
 
-
-      <div className='flex justify-between gap-6 p-4'>
-        {/* subscriber Growth */}
-        <div className='  w-1/2'>
-          <div className='flex justify-between '>
-            <div className=''>
-              <p className='text-[#0B1826] text-[18px] font-medium'>Subscriber Growth</p>
-            </div>
-            <div className='flex gap-2 items-center p-2 rounded-sm bg-[#F1F1F1]'>
+      {/* Charts */}
+      <div className='flex gap-6'>
+        {/* Subscriber Growth */}
+        <div className='w-1/2 bg-white p-4 rounded-lg shadow'>
+          <div className='flex justify-between items-center mb-4'>
+            <p className='text-[#0B1826] text-lg font-semibold'>Subscriber Growth</p>
+            <div className='flex items-center gap-2 bg-[#F1F1F1] px-2 py-1 rounded text-sm cursor-pointer'>
               <span>Yearly</span>
               <IoIosArrowDown />
             </div>
-
           </div>
-          <div>
+          <div className='h-[440px]'>
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
+              <BarChart data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Legend />
-                <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-                <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+                <Bar dataKey="uv" fill="#4F46E5" />
               </BarChart>
             </ResponsiveContainer>
           </div>
-
         </div>
 
-        {/* user Growth */}
-        <div className=' flex justify-between w-1/2'>
-          <div className=''>
-            <p className='text-[#0B1826] text-[18px] font-medium'>User Growth</p>
+        {/* User Growth */}
+        <div className='w-1/2 bg-white p-4 rounded-lg shadow'>
+          <div className='flex justify-between items-center mb-4'>
+            <p className='text-[#0B1826] text-lg font-semibold'>User Growth</p>
+            <div className='flex items-center gap-2 bg-[#F1F1F1] px-2 py-1 rounded text-sm cursor-pointer'>
+              <span>Yearly</span>
+              <IoIosArrowDown />
+            </div>
           </div>
-          <div className='flex gap-2 items-center p-2 rounded-sm bg-[#F1F1F1]'>
-            <span>Yearly</span>
-            <IoIosArrowDown />
-          </div>
+          {/* <div className='h-[300px]'>
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={data}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="pv" fill="#10B981" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div> */}
         </div>
       </div>
     </div>
