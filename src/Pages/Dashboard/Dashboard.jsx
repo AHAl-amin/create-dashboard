@@ -1,21 +1,35 @@
 import React from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { IoPeople } from 'react-icons/io5'
-import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
+import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid, AreaChart, Area } from 'recharts'
 
-const data = [
-  { name: 'Jan', uv: 100 },
+const percentageData = [
+  { name: 'Jan', uv: 20 },
   { name: 'Feb', uv: 80 },
   { name: 'Mar', uv: 70 },
   { name: 'Apr', uv: 90 },
-  { name: 'May', uv: 60 },
+  { name: 'May', uv: 100 },
   { name: 'Jun', uv: 75 },
   { name: 'Jul', uv: 95 },
   { name: 'Aug', uv: 65 },
   { name: 'Sep', uv: 85 },
   { name: 'Oct', uv: 55 },
   { name: 'Nov', uv: 70 },
-  { name: 'Dec', uv: 90 },
+  { name: 'Dec', uv: 50 },
+];
+const data = [
+  { name: 'Jan', uv: 20 },
+  { name: 'Feb', uv: 80 },
+  { name: 'Mar', uv: 70 },
+  { name: 'Apr', uv: 90 },
+  { name: 'May', uv: 100 },
+  { name: 'Jun', uv: 75 },
+  { name: 'Jul', uv: 95 },
+  { name: 'Aug', uv: 65 },
+  { name: 'Sep', uv: 85 },
+  { name: 'Oct', uv: 55 },
+  { name: 'Nov', uv: 70 },
+  { name: 'Dec', uv: 50 },
 ];
 function Dashboard() {
   return (
@@ -46,13 +60,14 @@ function Dashboard() {
           </div>
           <div className='h-[440px]'>
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data}>
+              <BarChart data={percentageData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="uv" fill="#4F46E5" />
+                <YAxis tickFormatter={(value) => `${value}%`} />
+                <Tooltip formatter={(value) => `${value}%`} />
+                <Bar dataKey='uv' fill="#8CAB91" />
               </BarChart>
+
             </ResponsiveContainer>
           </div>
         </div>
@@ -66,17 +81,27 @@ function Dashboard() {
               <IoIosArrowDown />
             </div>
           </div>
-          {/* <div className='h-[300px]'>
+          <div className='h-[440px]'>
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data}>
+              <AreaChart
+                width={500}
+                height={400}
+                data={data}
+                margin={{
+                  top: 10,
+                  right: 30,
+                  left: 0,
+                  bottom: 0,
+                }}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="pv" fill="#10B981" />
-              </BarChart>
+                 <YAxis tickFormatter={(value) => `${value}%`} />
+                <Tooltip formatter={(value) => `${value}%`} />
+                <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8CAB91" />
+              </AreaChart>
             </ResponsiveContainer>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
