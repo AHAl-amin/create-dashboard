@@ -1,13 +1,14 @@
 import { ChevronDown, FileQuestion, Mountain, Settings, ShieldUser } from 'lucide-react';
 import React, { useState } from 'react'
 import { CiCalendar } from 'react-icons/ci';
+import { FaArrowRightFromBracket } from 'react-icons/fa6';
 import { MdDashboard } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
 function Sideber() {
     const [active, setActive] = useState(null);
     return (
-        <div className='pl-4 '>
+        <div className='pl-4 relative min-h-screen '>
             <div className=' py-4'>
                 Logo
             </div>
@@ -75,6 +76,12 @@ function Sideber() {
                 <p>Settings</p>
                 <ChevronDown />
             </Link>
+
+            <div className='absolute bottom-20 right-20'>
+            <div className='flex items-center'>
+            <FaArrowRightFromBracket className='text-red-500' /> <span className='ml-2'>log out</span>
+            </div>
+            </div>
 
 
         </div>

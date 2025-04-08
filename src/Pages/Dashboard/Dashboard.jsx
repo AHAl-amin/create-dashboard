@@ -35,12 +35,12 @@ const data = [
 ];
 
 const icomReport = [
-  { name: 'Jan', uv: 37 },
-  { name: 'Feb', uv: 2 },
-  { name: 'Mar', uv: 26 },
-  { name: 'Apr', uv: 15 },
-  { name: 'May', uv: 33 },
-  { name: 'Jun', uv: 0 },
+  { name: 'Jan', uv: 30 },
+  { name: 'Feb', uv: 25 },
+  { name: 'Mar', uv: 27 },
+  { name: 'Apr', uv: 26 },
+  { name: 'May', uv: 35 },
+  { name: 'Jun', uv: 30 },
   { name: 'Jul', uv: 12 },
   { name: 'Aug', uv: 8 },
   { name: 'Sep', uv: 29 },
