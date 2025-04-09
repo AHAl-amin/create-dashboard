@@ -203,7 +203,7 @@ function Dashboard() {
             <table className="min-w-full table-auto">
               <thead>
                 <tr className="bg-[#F1F1F1]">
-                  <th className="px-4 py-2 text-left text-sm font-semibold">Serial No.</th>
+                  <th className="px-4 py-2 text-left text-sm font-semibold">S_No.</th>
                   <th className="px-4 py-2 text-left text-sm font-semibold">Name</th>
                   <th className="px-4 py-2 text-left text-sm font-semibold">Email</th>
                   <th className="px-4 py-2 text-left text-sm font-semibold">Contact Number</th>
